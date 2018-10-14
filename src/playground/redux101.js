@@ -20,9 +20,13 @@ const setCount = ({count}) => ({
 const resetCount = () => ({
     type: 'RESET'
 })
+
+//reducers
+
+
 //createstore tracks changes over time
 //createstore requires you pass in an argument
-const store = createStore((state = {count: 0}, action)=> {
+const countReducer = createStore((state = {count: 0}, action)=> {
     switch (action.type){
         case 'INCREMENT':
         return {count: state.count + action.incrementBy}
@@ -48,6 +52,8 @@ const unsub = store.subscribe(()=>{
     console.log(store.getState())
 })
 
+
+const store = createStore(countReducer)
 
 store.dispatch(incrementCount({incrementBy: 5}))
 
